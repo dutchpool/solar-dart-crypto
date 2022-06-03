@@ -46,7 +46,7 @@ void createTransferTransaction() {
   transferTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
 
   transferTransaction.schnorrSign(passphrase);
-  print("Transaction: ${transferTransaction.toJson()}");
+  print("Transfer Transaction: ${transferTransaction.toJson()}");
 
   // The result of voteTransaction.toJson() can be send as a POST to
   // https://sxp.testnet.sh/api/transactions with the following body:
@@ -62,13 +62,13 @@ void createVoteTransaction() {
   final passphrase = "this is a top secret passphrase";
 
   voteTransaction.network = Testnet().version();
-  voteTransaction.nonce = 1; // Get the current nonce from the api and increase by 1
+  voteTransaction.nonce = 7; // Get the current nonce from the api and increase by 1
   voteTransaction.senderPublicKey = PublicKey.fromPassphrase(passphrase);
   voteTransaction.recipientId = Address.fromPassphrase(passphrase);
   voteTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
 
   voteTransaction.schnorrSign(passphrase);
-  print("Transaction: ${voteTransaction.toJson()}");
+  print("Vote Transaction: ${voteTransaction.toJson()}");
 
   // The result of voteTransaction.toJson() can be send as a POST to
   // https://sxp.testnet.sh/api/transactions with the following body:
@@ -88,7 +88,7 @@ void createBurnTransaction() {
   burnTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
 
   burnTransaction.schnorrSign(passphrase);
-  print("Transaction: ${burnTransaction.toJson()}");
+  print("Burn Transaction: ${burnTransaction.toJson()}");
 
   // The result of voteTransaction.toJson() can be send as a POST to
   // https://sxp.testnet.sh/api/transactions with the following body:

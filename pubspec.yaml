@@ -19,7 +19,9 @@ dependencies:
   schnorr: ^0.0.2 # https://pub.dev/packages/schnorr
 
   bip340:
-    path: packages/dart-bip340 # https://pub.dev/packages/bip340 dependency gives conflicts, while a direct copy does not
+    git:
+      url: https://github.com/dutchpool/dart-bip340
+      ref: master
 
 dev_dependencies:
   lints: ^1.0.0

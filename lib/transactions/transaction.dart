@@ -1,8 +1,8 @@
 import 'dart:convert';
 
+import 'package:bip340/bip340.dart';
 import 'package:crypto/crypto.dart';
 import 'package:hex/hex.dart';
-import 'package:bip340/bip340.dart';
 import 'dart:math';
 
 import '../configuration/network.dart';
