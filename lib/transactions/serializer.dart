@@ -15,7 +15,7 @@ class Serializer {
       {bool skipSignature = true,
       bool skipSecondSignature = true,
       bool skipMultiSignature = true}) {
-    // final network = Network.instance.network;
+
     final List<int> common = _serializeCommon();
     final List<int> vendorField = _serializeVendorField();
     final List<int> transaction = _transaction.serialize();
@@ -29,6 +29,7 @@ class Serializer {
     bytes.addAll(vendorField);
     bytes.addAll(transaction);
     bytes.addAll(signatures);
+
     return bytes;
   }
 
@@ -68,23 +69,23 @@ class Serializer {
     //TODO: max length 255
     final List<int> bytes = [];
     if (_transaction.hasVendorField()) {
-      if (_transaction.vendorField != null &&
-          _transaction.vendorField!.isNotEmpty) {
-        final length = _transaction.vendorField!.length;
+      if (_transaction.memo != null &&
+          _transaction.memo!.isNotEmpty) {
+        final length = _transaction.memo!.length;
         // bytes.add(length);
         final lengthByte = Uint8List(1)
           ..buffer.asByteData().setInt8(0, length);
         bytes.addAll(lengthByte);
         bytes.addAll(utf8.encode(_transaction
-            .vendorField!));
-      } else if (_transaction.vendorFieldHex != null &&
-          _transaction.vendorFieldHex!.isNotEmpty) {
-        final length = _transaction.vendorFieldHex!.length;
+            .memo!));
+      } else if (_transaction.memoHex != null &&
+          _transaction.memoHex!.isNotEmpty) {
+        final length = _transaction.memoHex!.length;
         bytes.add(length);
         final lengthByte = Uint8List(1)
           ..buffer.asByteData().setInt8(0, length);
         // bytes.add(length);
-        bytes.addAll(HEX.decode(_transaction.vendorFieldHex!));
+        bytes.addAll(HEX.decode(_transaction.memoHex!));
       } else {
         bytes.add(0x00);
       }

@@ -43,7 +43,7 @@ void createTransferTransaction() {
   transferTransaction.nonce = 1; // Get the current nonce from the api and increase by 1
   transferTransaction.expiration = 0;
   transferTransaction.senderPublicKey = PublicKey.fromPassphrase(passphrase);
-  transferTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
+  transferTransaction.memo = "dart_crypto"; // It is optional to add a memo
 
   transferTransaction.schnorrSign(passphrase);
   print("Transfer Transaction: ${transferTransaction.toJson()}");
@@ -54,18 +54,18 @@ void createTransferTransaction() {
 }
 
 void createVoteTransaction() {
-  final VoteTransaction voteTransaction = VoteTransaction(
-    ["+st3v3n"],
+  final VoteTransaction voteTransaction = VoteTransaction.fromVoteList(
+    ["st3v3n"],
     fee: 10000000, // Static fee is used when not given
   );
 
   final passphrase = "this is a top secret passphrase";
 
   voteTransaction.network = Testnet().version();
-  voteTransaction.nonce = 7; // Get the current nonce from the api and increase by 1
+  voteTransaction.nonce = 1; // Get the current nonce from the api and increase by 1
   voteTransaction.senderPublicKey = PublicKey.fromPassphrase(passphrase);
   voteTransaction.recipientId = Address.fromPassphrase(passphrase);
-  voteTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
+  voteTransaction.memo = "dart_crypto"; // It is optional to add a memo
 
   voteTransaction.schnorrSign(passphrase);
   print("Vote Transaction: ${voteTransaction.toJson()}");
@@ -77,7 +77,7 @@ void createVoteTransaction() {
 
 void createBurnTransaction() {
   final BurnTransaction burnTransaction = BurnTransaction(
-    100000000,
+    10000000,
   );
 
   final passphrase = "this is a top secret passphrase";
@@ -85,7 +85,7 @@ void createBurnTransaction() {
   burnTransaction.network = Testnet().version();
   burnTransaction.nonce = 1; // Get the current nonce from the api and increase by 1
   burnTransaction.senderPublicKey = PublicKey.fromPassphrase(passphrase);
-  burnTransaction.vendorField = "dart_crypto"; // It is optional to add a vendor field
+  burnTransaction.memo = "dart_crypto"; // It is optional to add a memo
 
   burnTransaction.schnorrSign(passphrase);
   print("Burn Transaction: ${burnTransaction.toJson()}");

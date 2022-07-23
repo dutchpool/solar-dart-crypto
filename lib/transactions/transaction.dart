@@ -21,8 +21,8 @@ abstract class Transaction {
   int? nonce;
   String? senderPublicKey;
   int fee = 0;
-  String? vendorField;
-  String? vendorFieldHex;
+  String? memo;
+  String? memoHex;
   TransactionAsset? asset;
   String? signature;
   String? secondSignature;
@@ -38,7 +38,7 @@ abstract class Transaction {
     required this.type,
     int? typeGroup,
     int? fee,
-    String? vendorField,
+    String? memo,
   }) {
     this.network = network == null
         ? Network.instance.network.version()
@@ -51,8 +51,8 @@ abstract class Transaction {
       amount = 0;
     }
     this.fee = fee ?? Transactions.transactionFees[type]!;
-    if (Transactions.hasVendorField[type] ?? false) {
-      this.vendorField = vendorField;
+    if (Transactions.hasMemoField[type] ?? false) {
+      this.memo = memo;
     }
   }
 
@@ -117,8 +117,8 @@ abstract class Transaction {
       map["asset"] = asset?.toMap();
     }
     map["id"] = id;
-    if (vendorField != null) {
-      map["vendorField"] = vendorField;
+    if (memo != null) {
+      map["memo"] = memo;
     }
     return jsonEncode(map);
   }

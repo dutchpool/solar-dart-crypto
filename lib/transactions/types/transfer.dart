@@ -7,11 +7,12 @@ import '../../networks/network_interface.dart';
 import '../../transactions.dart';
 import '../transaction.dart';
 
+@Deprecated("Removed from core")
 class TransferTransaction extends Transaction {
   TransferTransaction(
     String recipientId,
     int amount, {
-    String? vendorField,
+    String? memo,
     int? fee,
     NetworkInterface? network,
     String? passphrase,
@@ -20,7 +21,7 @@ class TransferTransaction extends Transaction {
           passphrase: passphrase,
           type: Transactions.transfer,
           fee: fee,
-          vendorField: vendorField
+          memo: memo
         ) {
     this.recipientId = recipientId;
     if (amount > 0) {

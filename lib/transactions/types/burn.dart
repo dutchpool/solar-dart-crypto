@@ -8,7 +8,7 @@ import 'package:dart_crypto/transactions/transaction.dart';
 class BurnTransaction extends Transaction {
   BurnTransaction(
       int amount, {
-        String? vendorField,
+        String? memo,
         int? fee,
         NetworkInterface? network,
         String? passphrase,
@@ -18,7 +18,7 @@ class BurnTransaction extends Transaction {
       typeGroup: Transactions.typeGroupSolar,
       type: Transactions.burn,
       fee: fee,
-      vendorField: vendorField
+      memo: memo
   ) {
     if (amount > 0) {
       this.amount = amount;

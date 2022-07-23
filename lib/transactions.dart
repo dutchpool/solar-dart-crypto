@@ -13,9 +13,10 @@ class Transactions {
   static const int htlcRefund = 10;
 
   static const int burn = 0;
+  static const int solarVote = 2;
 
   static const Map<int, String> transactionTypes = {
-    transfer: 'transfer',
+    transfer: 'transfer', // Disabled in core
     secondSignatureRegistration: 'second_signature_registration',
     delegateRegistration: 'delegate_registration',
     vote: 'vote',
@@ -50,7 +51,7 @@ class Transactions {
     burn: 0,
   };
 
-  static const Map<int, bool> hasVendorField = {
+  static const Map<int, bool> hasMemoField = {
     transfer: true,
     secondSignatureRegistration: false,
     delegateRegistration: false,

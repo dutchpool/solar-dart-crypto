@@ -2,7 +2,7 @@ import 'transaction_asset.dart';
 
 class VoteTransactionAsset implements TransactionAsset {
 
-  final List<String> votes;
+  final Map<String, double> votes;
 
   VoteTransactionAsset(this.votes);
 
