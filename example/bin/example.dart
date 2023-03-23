@@ -1,4 +1,5 @@
 import 'package:dart_crypto/identities/address.dart';
+import 'package:dart_crypto/identities/mnemonic.dart';
 import 'package:dart_crypto/identities/public_key.dart';
 import 'package:dart_crypto/networks/testnet.dart';
 import 'package:dart_crypto/transactions/types/burn.dart';
@@ -6,11 +7,23 @@ import 'package:dart_crypto/transactions/types/transfer.dart';
 import 'package:dart_crypto/transactions/types/vote.dart';
 
 void main(List<String> arguments) {
+  generateMnemonicPassphrase();
   getAddressFromPassphrase();
   validateAddress();
   createTransferTransaction();
   createVoteTransaction();
   createBurnTransaction();
+}
+
+void generateMnemonicPassphrase() {
+  final passphrase = Mnemonic.generateMnemonicPassphrase();
+  final network = Testnet();
+  final address = Address.fromPassphrase(
+    passphrase,
+    networkVersion: network.version(),
+  );
+  print(address);
+  print(passphrase);
 }
 
 void getAddressFromPassphrase() {

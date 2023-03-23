@@ -1,6 +1,6 @@
 name: dart_crypto
 description: Helper library for interaction with the Solar network
-version: 0.0.2
+version: 0.0.3
 publish_to: none
 
 environment:
@@ -8,15 +8,17 @@ environment:
 
 
 dependencies:
-  crypto: ^3.0.1 # https://pub.dev/packages/crypto
+  crypto: ^3.0.2 # https://pub.dev/packages/crypto
   hex: ^0.2.0 # https://pub.dev/packages/hex
   base58check: ^2.0.0 # https://pub.dev/packages/base58check
 
   elliptic: ^0.3.8 # https://pub.dev/packages/elliptic
 
-  pointycastle: ^3.5.2 # https://pub.dev/packages/pointycastle
+  pointycastle: ^3.7.1 # https://pub.dev/packages/pointycastle
 
   schnorr: ^0.0.2 # https://pub.dev/packages/schnorr
+
+  bip39_mnemonic: ^3.0.6 # https://pub.dev/packages/bip39_mnemonic
 
   bip340:
     git:
