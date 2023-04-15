@@ -64,7 +64,7 @@ class VoteTransaction extends Transaction {
   }
 
   @override
-  bool hasVendorField() {
+  bool hasMemo() {
     return true;
   }
 

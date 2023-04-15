@@ -1,12 +1,12 @@
 class Transactions {
 
-  static const int transfer = 0;
+  static const int legacyTransfer = 0;
   static const int secondSignatureRegistration = 1;
   static const int delegateRegistration = 2;
   static const int vote = 3;
   static const int multiSignatureRegistration = 4;
   static const int ipfs = 5;
-  static const int multiPayment = 6;
+  static const int transfer = 6;
   static const int delegateResignation = 7;
   static const int htlcLock = 8;
   static const int htlcClaim = 9;
@@ -16,13 +16,13 @@ class Transactions {
   static const int solarVote = 2;
 
   static const Map<int, String> transactionTypes = {
-    transfer: 'transfer', // Disabled in core
+    legacyTransfer: 'transferOld', // Disabled in core
     secondSignatureRegistration: 'second_signature_registration',
     delegateRegistration: 'delegate_registration',
     vote: 'vote',
     multiSignatureRegistration: 'multi_signature_registration',
     ipfs: 'ipfs',
-    multiPayment: 'multi_payment',
+    transfer: 'transfer',
     delegateResignation: 'delegate_resignation',
     htlcLock: 'htlc_lock',
     htlcClaim: 'htlc_claim',
@@ -34,13 +34,13 @@ class Transactions {
   };
 
   static const Map<int, int> transactionFees = {
-    transfer: 100000000,
+    legacyTransfer: 100000000,
     secondSignatureRegistration: 500000000,
     delegateRegistration: 2500000000,
     vote: 100000000,
     multiSignatureRegistration: 500000000,
     ipfs: 500000000,
-    multiPayment: 10000000,
+    transfer: 10000000,
     delegateResignation: 2500000000,
     htlcLock: 10000000,
     htlcClaim: 0,
@@ -52,13 +52,13 @@ class Transactions {
   };
 
   static const Map<int, bool> hasMemoField = {
-    transfer: true,
+    legacyTransfer: true,
     secondSignatureRegistration: false,
     delegateRegistration: false,
     vote: true,
     multiSignatureRegistration: false,
     ipfs: false,
-    multiPayment: true,
+    transfer: true,
     delegateResignation: true,
     htlcLock: false,
     htlcClaim: false,

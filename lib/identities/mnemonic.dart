@@ -4,6 +4,7 @@ class Mnemonic {
   static String generateMnemonicPassphrase() {
     final mnemonic = bip39.Mnemonic.generate(
       bip39.Language.english,
+      passphrase: "",
       entropyLength: 128,
     );
     return mnemonic.sentence;

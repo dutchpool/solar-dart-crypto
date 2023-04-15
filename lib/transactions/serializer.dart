@@ -17,7 +17,7 @@ class Serializer {
       bool skipMultiSignature = true}) {
 
     final List<int> common = _serializeCommon();
-    final List<int> vendorField = _serializeVendorField();
+    final List<int> vendorField = _serializeMemo();
     final List<int> transaction = _transaction.serialize();
     final List<int> signatures = _serializeSignatures(
       skipSignature: skipSignature,
@@ -65,19 +65,22 @@ class Serializer {
     return bytes;
   }
 
-  List<int> _serializeVendorField() {
+  List<int> _serializeMemo() {
     //TODO: max length 255
     final List<int> bytes = [];
-    if (_transaction.hasVendorField()) {
+    if (_transaction.hasMemo()) {
       if (_transaction.memo != null &&
           _transaction.memo!.isNotEmpty) {
-        final length = _transaction.memo!.length;
+        final memo = utf8.encode(_transaction.memo!);
+        // final length = _transaction.memo!.length;
+        final length = memo.length;
         // bytes.add(length);
         final lengthByte = Uint8List(1)
           ..buffer.asByteData().setInt8(0, length);
         bytes.addAll(lengthByte);
-        bytes.addAll(utf8.encode(_transaction
-            .memo!));
+        bytes.addAll(memo);
+        // bytes.addAll(utf8.encode(_transaction
+        //     .memo!));
       } else if (_transaction.memoHex != null &&
           _transaction.memoHex!.isNotEmpty) {
         final length = _transaction.memoHex!.length;

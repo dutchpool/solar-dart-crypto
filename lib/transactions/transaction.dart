@@ -72,7 +72,7 @@ abstract class Transaction {
     );
   }
 
-  bool hasVendorField() {
+  bool hasMemo() {
     return false;
   }
 
